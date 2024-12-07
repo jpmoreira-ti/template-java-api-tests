@@ -9,8 +9,7 @@ on:
     - cron: '0 17 * * *'    
 
 jobs:
-  build:
-
+  tests-api:
     runs-on: ubuntu-latest
 
     steps:
@@ -47,4 +46,12 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: test-api-report
-        path: target/custom-reports/ 
+        path: target/custom-reports/
+        
+    - name: Summary Report
+      uses: dorny/test-reporter@v1
+      if: success() || failure()
+      with:
+        name: Summary Report    
+        path: target/custom-reports/TEST-*.xml 
+        reporter: java-junit    
