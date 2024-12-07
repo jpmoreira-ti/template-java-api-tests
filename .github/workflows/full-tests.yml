@@ -54,4 +54,5 @@ jobs:
       with:
         name: Summary Report    
         path: target/custom-reports/TEST-*.xml 
-        reporter: java-junit    
+        reporter: java-junit
+            
